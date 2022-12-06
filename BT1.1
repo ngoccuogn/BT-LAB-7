@@ -1,0 +1,11 @@
+create function TuoiNhanvien(@MaNV nvarchar(10))
+    returns int 
+as
+begin
+     return (
+	     select DATEDIFF(year, NGSINH, GETDATE()) + 1 from NHANVIEN where MANV = @MaNV
+		 );
+end;
+
+select [dbo].[TuoiNhanvien]('001');
+select * from NHANVIEN
